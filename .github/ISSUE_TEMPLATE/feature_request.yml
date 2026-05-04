@@ -6,9 +6,9 @@ body:
     id: preflight
     attributes:
       label: Pre-flight Checks
+      description: Please confirm before submitting
       options:
         - label: I have searched existing issues and this is not a duplicate
-          required: true
 
   - type: textarea
     id: problem
