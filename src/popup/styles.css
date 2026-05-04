@@ -1,0 +1,371 @@
+/* ============================================================
+   Interval Mine — Popup Styles
+   ============================================================
+   Clean, elegant design matching "flow" brand.
+   320px wide popup. Phase-aware accent colors.
+   ============================================================ */
+
+/* ── Reset & Base ──────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Brand palette */
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-text: #1a1a2e;
+  --color-text-muted: #6b7280;
+  --color-border: #e5e7eb;
+
+  /* Phase-specific accents */
+  --color-focus: #f59e0b;        /* warm amber */
+  --color-break: #3b82f6;        /* cool blue */
+  --color-long-break: #10b981;   /* calm green */
+  --color-complete: #8b5cf6;     /* celebratory purple */
+
+  /* Current accent (set by JS via class) */
+  --color-accent: var(--color-focus);
+
+  /* Sizing */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 14px;
+  line-height: 1.5;
+  width: 320px;
+  min-height: 400px;
+}
+
+/* ── App Container ─────────────────────────────────────────── */
+
+.app {
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.app__header {
+  text-align: center;
+}
+
+.app__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* ── Timer View ────────────────────────────────────────────── */
+
+.timer-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 12px;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border-top: 3px solid var(--color-accent);
+}
+
+/* Phase-specific accent overrides */
+.timer-view--focus {
+  --color-accent: var(--color-focus);
+}
+.timer-view--break {
+  --color-accent: var(--color-break);
+}
+.timer-view--long_break {
+  --color-accent: var(--color-long-break);
+}
+.timer-view--complete {
+  --color-accent: var(--color-complete);
+}
+
+.timer-view__phase {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.timer-view__emoji {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.timer-view__label {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.timer-view__countdown {
+  font-size: 48px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 2px;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.timer-view__sessions {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.timer-view__controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+/* ── Buttons ───────────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-width: 80px;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn--primary {
+  background: var(--color-accent);
+  color: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+.btn--primary:hover {
+  filter: brightness(1.08);
+}
+
+.btn--secondary {
+  background: var(--color-surface);
+  color: var(--color-accent);
+  border: 1.5px solid var(--color-accent);
+}
+.btn--secondary:hover {
+  background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-text-muted);
+  padding: 8px 10px;
+  min-width: auto;
+}
+.btn--ghost:hover {
+  color: var(--color-text);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* ── Config View ───────────────────────────────────────────── */
+
+.config-view {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 12px;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Stepper ───────────────────────────────────────────────── */
+
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.stepper__label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+  min-width: 70px;
+}
+
+.stepper__controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stepper__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  font-size: 16px;
+  font-weight: 600;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.12s ease;
+  line-height: 1;
+}
+
+.stepper__btn:hover:not(:disabled) {
+  border-color: var(--color-focus);
+  color: var(--color-focus);
+}
+
+.stepper__btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.stepper__input {
+  width: 44px;
+  height: 28px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  color: var(--color-text);
+  outline: none;
+  transition: border-color 0.12s ease;
+  -moz-appearance: textfield;
+}
+
+.stepper__input::-webkit-inner-spin-button,
+.stepper__input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.stepper__input:focus {
+  border-color: var(--color-focus);
+}
+
+.stepper__input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.stepper__unit {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  min-width: 24px;
+}
+
+/* ── Toggle ────────────────────────────────────────────────── */
+
+.config-view__toggle-row {
+  display: flex;
+  align-items: center;
+  padding: 4px 0;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle__slider {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  background: var(--color-border);
+  border-radius: 10px;
+  transition: background 0.2s ease;
+}
+
+.toggle__slider::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease;
+}
+
+.toggle__input:checked + .toggle__slider {
+  background: var(--color-focus);
+}
+
+.toggle__input:checked + .toggle__slider::after {
+  transform: translateX(16px);
+}
+
+.toggle__input:disabled + .toggle__slider {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.toggle__input:focus-visible + .toggle__slider {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.toggle__label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* ── Loading State ─────────────────────────────────────────── */
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
