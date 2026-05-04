@@ -58,7 +58,7 @@ export function ConfigView({
         label="Focus"
         value={config.focusMinutes}
         onChange={handleFocusChange}
-        min={5}
+        min={1}
         max={120}
         unit="min"
         disabled={disabled}
